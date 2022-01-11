@@ -35,5 +35,3 @@ function Primo($numero) {
 }
 
 $primos = Primos(1, 10);
-
-var_dump($primos);
