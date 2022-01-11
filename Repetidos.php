@@ -5,22 +5,25 @@ function Sorteio() {
 
     $sorteados = [];
 
-    for ($i = 1; $i <= $final; $i++) {
-        $sorteados[] = rand(1, 10);
+    for ($i = 1; $i <= 9; $i++) {
+        $numero = rand(1, 10);
+        $sorteados[] = $numero;
     }
-    sort($sorteados);
-    return $sorteados;
+
+    return Unique($sorteados);
 }
 
-function Repetidos($sorteados) {
-    $repetidos = [];
-
-    for ($i = 0; $i < count($sorteados); $i++) {
-        $item = array_pop($sorteados);
-        if (in_array($item, $sorteados)) {
-            $repetidos[] = $item;
+function Unique($sorteados) {
+    $unique = array_unique($sorteados);
+    $dup = array_diff_key($sorteados, $unique);
+    
+    foreach ($dup as $key => $value) {
+        foreach ($sorteados as $key2 => $value2) {
+            if ($value == $value2) {
+                unset($sorteados[$key2]);
+            }
         }
     }
-    sort($repetidos);
-    return $repetidos;
+
+    return array_values($sorteados);
 }

@@ -34,4 +34,3 @@ function Primo($numero) {
     return true;
 }
 
-$primos = Primos(1, 10);
